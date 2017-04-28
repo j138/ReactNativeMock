@@ -1,0 +1,13 @@
+platform :ios, '9.0'
+
+target 'ReactNativeMock' do
+  use_frameworks!
+
+# pod 'lottie-ios', :path => '../node_modules/lottie-ios'
+# pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
+  target 'ReactNativeMockTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end

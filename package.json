@@ -10,6 +10,9 @@
     "prettier": "find ./src -name '*.js' -o -name '*.jsx' | xargs prettier-eslint --write",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "npm-run-all -p jest nsp eslint",
+    "build:pods": "cd ./ios; pod install; cd -",
+    "run:ios": "react-native run-ios --project-path ./ios",
+    "run:android": "./gradlew installDebug && npm run start:android",
     "ncu": "ncu -a"
   },
   "devDependencies": {
@@ -34,9 +37,9 @@
     "react-test-renderer": "16.0.0-alpha.6"
   },
   "dependencies": {
+    "lottie-react-native": "1.1.1",
     "mobx": "3.1.9",
     "mobx-react": "^4.1.8",
-    "mobx-react-router": "^4.0.1",
     "prop-types": "15.5.8",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",

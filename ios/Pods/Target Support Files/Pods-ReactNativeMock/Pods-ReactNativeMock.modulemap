@@ -1,0 +1,6 @@
+framework module Pods_ReactNativeMock {
+  umbrella header "Pods-ReactNativeMock-umbrella.h"
+
+  export *
+  module * { export * }
+}
