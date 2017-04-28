@@ -10,7 +10,7 @@ import StaffId from '../components/templates/StaffId';
 const userState = new UserState();
 
 const stores = {
-  users: userState,
+  user: userState,
 };
 
 const styles = StyleSheet.create({

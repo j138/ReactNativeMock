@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { inject, observer } from 'mobx-react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'react-router-native';
 
@@ -16,24 +18,27 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class StaffId extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      uid: 'T00114',
-      name: 'Junya Nakazato',
-    };
+@inject('user')
+@observer
+export default class StaffId extends React.Component {
+  componentDidMount() {
+    const { user } = this.props;
+    user.uid = 'T00114';
+    user.name = 'Junya Nakazato';
+    user.increment();
   }
 
   render() {
-    const { uid, name } = this.state;
+    const { uid, name, inc } = this.props.user;
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           {uid}: {name}
         </Text>
-
+        <Text style={styles.welcome}>
+          Mobx.inc: {inc}
+        </Text>
         <Link to="/">
           <Text>jump portal</Text>
         </Link>
@@ -41,5 +46,13 @@ export default class StaffId extends Component {
     );
   }
 }
+
+StaffId.propTypes = {
+  user: PropTypes.shape({
+    uid: PropTypes.string,
+    name: PropTypes.string,
+    inc: PropTypes.number,
+  }),
+};
 
 AppRegistry.registerComponent('StaffId', () => StaffId);
